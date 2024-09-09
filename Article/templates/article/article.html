@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'article/style.css'%}">
+</head>
+<body>
+    <a href="{%url 'article:ajout_article' %}">Ajouter</a>
+    {% for article in articles %}
+        <p>Titre : {{article.titre}}</p>
+        <p>Contenu : {{article.contenu}}</p>
+        <p>Auteur : {{article.auteur}}</p>
+        {% if article.image %}
+            <img src="{{article.image.url}}" alt="image de l'article" style="width: 100px; height: 100px;">
+        {% else %}
+            <p>No image</p>
+        {% endif %}
+        <a href="{%url 'article:modifier_article' article.id%}">Modifier</a>
+        <a href="{%url 'article:supprimer_article' article.id%}">Supprimer</a>
+        <a href="{%url 'article:detail_article' article.id%}">Detail</a>
+
+
+    {% endfor %}
+</body>
+</html>
