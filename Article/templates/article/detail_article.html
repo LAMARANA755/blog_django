@@ -1,13 +1,6 @@
+{% extends 'article/base.html'%}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'article/style.css'%}">
-</head>
-<body>
+{%block content%}
         <h3>Detail Article</h3>
         <p><strong class="grand_ligne">Titre</strong> : {{article.titre}}</p>
         <p><strong class="grand_ligne"></strong>Contenu</strong> : {{article.contenu}}</p>
@@ -20,5 +13,4 @@
         {% endif %}
         <a href="{%url 'article:modifier_article' article.id%}">Modifier</a>
         <a href="{%url 'article:supprimer_article' article.id%}">Supprimer</a>
-</body>
-</html>
+{% endblock %}
